@@ -57,3 +57,7 @@ html {
     z-index:10;
     transform: translateX(-7px) translateY(-4px);
   }
+
+  .current-temp{
+      font-size:5rem;
+  }
