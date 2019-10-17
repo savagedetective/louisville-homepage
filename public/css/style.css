@@ -55,9 +55,21 @@ html {
     border-radius: 50%;
     left:50%;
     z-index:10;
-    transform: translateX(-7px) translateY(-4px);
+    transform: translateX(-6px) translateY(-4px);
   }
 
   .current-temp{
       font-size:5rem;
+      position:relative;
+  }
+
+  .temp-holder {
+    display: block;
+    text-align: center;
+  }
+
+  .temp-holder p {
+    font-size: 25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
   }

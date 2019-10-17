@@ -21,8 +21,6 @@ $(document).ready(function () {
         minuteHand.style.transform = `rotate(${minutesToDegree}deg)`;
         hourHand.style.transform = `rotate(${hoursToDegrees}deg)`;
 
-        console.log(hours, minutes, seconds);
-
         //pauses transition at 12 o'clock so hands don't reset counter-clockwise
         if (secondsToDegree === 90) {
             allHands.forEach(hand => hand.style.transition = "none");
