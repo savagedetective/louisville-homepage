@@ -1,13 +1,13 @@
 $(document).ready(function () {
 
-    console.log("app.js loaded");
-
-    const secondHand = document.querySelector(".second-hand");
-    const minuteHand = document.querySelector(".min-hand");
-    const hourHand = document.querySelector(".hour-hand");
-    const allHands = document.querySelectorAll(".hand");
+    console.log("Goliath online.");
 
     function setDate() {
+
+        const secondHand = document.querySelector(".second-hand");
+        const minuteHand = document.querySelector(".min-hand");
+        const hourHand = document.querySelector(".hour-hand");
+        const allHands = document.querySelectorAll(".hand");
 
         const now = new Date();
         const seconds = now.getSeconds();
@@ -29,7 +29,30 @@ $(document).ready(function () {
             allHands.forEach(hand => hand.style.transition = "");
         }
     }
-    
+
+    function setTemp() {
+
+        console.log("Retrieving temperature.");
+
+        $.get("/api/weather").then(function (data) {
+
+            console.log(data);
+
+            const tempKelvin = data.main.temp;
+            const tempDegrees = (tempKelvin * (9/5) - 459.67).toFixed(1);
+
+            console.log(tempDegrees);
+
+            $(".temp-holder p").text(tempDegrees);
+
+        }).catch((err) => {
+            console.log(err);
+        });
+
+
+    }
+
     //handles motion of clock hands every second.
     setInterval(setDate, 1000);
+    setTemp();
 });
