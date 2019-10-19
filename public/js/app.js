@@ -42,7 +42,7 @@ $(document).ready(function () {
             const tempDegrees = (tempKelvin * (9/5) - 459.67).toFixed(1);
             const description = data.weather[0]["description"];
 
-            console.log(tempDegrees);
+            console.log(`Current temperature is ${tempDegrees}. Weather is ${description}.`);
 
             $(".temp-holder p").text(tempDegrees);
             $(".temp-holder p").after(`<p>${description}</p>`);
@@ -55,7 +55,29 @@ $(document).ready(function () {
 
     }
 
+    function progressBar() {
+
+        const bar = $("div.progress-bar");
+        let currentWidth = parseInt(bar.attr("aria-valuenow"));
+        currentWidth += 1;
+
+        if (currentWidth < 101) {
+
+            bar.attr("aria-valuenow", currentWidth);
+            bar.css("width", currentWidth + "%");
+
+        } else {
+
+            bar.attr("aria-valuenow", 0);
+            bar.css("width", "0%");
+
+            setTemp();
+        }
+
+    }
+
     //handles motion of clock hands every second.
     setInterval(setDate, 1000);
     setTemp();
+    setInterval(progressBar, 6000);
 });
