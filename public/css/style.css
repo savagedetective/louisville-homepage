@@ -9,6 +9,14 @@ html {
     background-color:rgb(122, 122, 238);
   }
 
+  .jumbotron {
+    margin-bottom: 0;
+  }
+
+  .progress {
+    border-radius: 0;
+  }
+
   .clock {
     background: url(../images/clock.svg) no-repeat center;
     background-size: 90%;
@@ -77,4 +85,8 @@ html {
   .temp-holder p:nth-child(2) {
     font-size:5rem;
     margin-top:-60px;
+  }
+
+  .five-day {
+    text-align: center;
   }

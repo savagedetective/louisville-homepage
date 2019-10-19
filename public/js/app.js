@@ -39,14 +39,45 @@ $(document).ready(function () {
             console.log(data);
 
             const tempKelvin = data.main.temp;
-            const tempDegrees = (tempKelvin * (9/5) - 459.67).toFixed(1);
+            const tempDegrees = (tempKelvin * (9 / 5) - 459.67).toFixed(1);
             const description = data.weather[0]["description"];
+            const minK = (data.main.temp_min);
+            const minD = (minK * (9 / 5) - 459.67).toFixed(0);
+            const maxK = data.main.temp_max;
+            const maxD = (maxK * (9 / 5) - 459.67).toFixed(0);
 
             console.log(`Current temperature is ${tempDegrees}. Weather is ${description}.`);
 
             $(".temp-holder p").text(tempDegrees);
             $(".temp-holder p:nth-child(2)").text(description);
+            $(".dayZero").html(`<p>${minD} - ${maxD}`);
 
+            let day;
+
+            switch (new Date().getDay()) {
+                case 0:
+                    day = "Sunday";
+                    break;
+                case 1:
+                    day = "Monday";
+                    break;
+                case 2:
+                    day = "Tuesday";
+                    break;
+                case 3:
+                    day = "Wednesday";
+                    break;
+                case 4:
+                    day = "Thursday";
+                    break;
+                case 5:
+                    day = "Friday";
+                    break;
+                case 6:
+                    day = "Saturday";
+            }
+
+            $(".dayZero").append(`<p>${day}</p>`);
 
         }).catch((err) => {
             console.log(err);
