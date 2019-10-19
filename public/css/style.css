@@ -69,7 +69,12 @@ html {
   }
 
   .temp-holder p {
-    font-size: 25rem;
+    font-size: 210px;
     margin-top: 0;
     margin-bottom: 1rem;
+  }
+
+  .temp-holder p:nth-child(2) {
+    font-size:5rem;
+    margin-top:-60px;
   }

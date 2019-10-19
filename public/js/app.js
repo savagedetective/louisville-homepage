@@ -40,10 +40,13 @@ $(document).ready(function () {
 
             const tempKelvin = data.main.temp;
             const tempDegrees = (tempKelvin * (9/5) - 459.67).toFixed(1);
+            const description = data.weather[0]["description"];
 
             console.log(tempDegrees);
 
             $(".temp-holder p").text(tempDegrees);
+            $(".temp-holder p").after(`<p>${description}</p>`);
+
 
         }).catch((err) => {
             console.log(err);
