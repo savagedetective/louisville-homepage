@@ -46,12 +46,6 @@ $(document).ready(function () {
             const maxK = data.main.temp_max;
             const maxD = (maxK * (9 / 5) - 459.67).toFixed(0);
 
-            console.log(`Current temperature is ${tempDegrees}. Weather is ${description}.`);
-
-            $(".temp-holder p").text(tempDegrees);
-            $(".temp-holder p:nth-child(2)").text(description);
-            $(".dayZero").html(`<p>${minD} - ${maxD}`);
-
             let day;
 
             switch (new Date().getDay()) {
@@ -77,6 +71,11 @@ $(document).ready(function () {
                     day = "Saturday";
             }
 
+            console.log(`Today is ${day}. Current temperature is ${tempDegrees}. Weather is ${description}.`);
+
+            $(".temp-holder").html(`<p>${tempDegrees}</p>`);
+            $(".temp-holder").append(`<p>${description}</p>`);
+            $(".dayZero").html(`<p>${minD} - ${maxD}`);
             $(".dayZero").append(`<p>${day}</p>`);
 
         }).catch((err) => {
