@@ -45,7 +45,7 @@ $(document).ready(function () {
             console.log(`Current temperature is ${tempDegrees}. Weather is ${description}.`);
 
             $(".temp-holder p").text(tempDegrees);
-            $(".temp-holder p").after(`<p>${description}</p>`);
+            $(".temp-holder p:nth-child(2)").text(description);
 
 
         }).catch((err) => {
