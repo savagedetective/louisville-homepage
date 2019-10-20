@@ -71,11 +71,10 @@ $(document).ready(function () {
 
             console.log(`Today is ${day}. Current temperature is ${tempDegrees}. Weather is ${description}.`);
 
-            $(".temp-holder").html(`<p>${tempDegrees}</p>`);
+            $(".temp-holder").html(`<p>${day}</p>`);
+            $(".temp-holder").append(`<p>${tempDegrees}</p>`);
+            $(".temp-holder").append(`<p>${minD} - ${maxD}`);
             $(".temp-holder").append(`<p>${description}</p>`);
-            $(".dayZero").html(`<p>${day}</p>`);
-            $(".dayZero").append(`<p>${minD} - ${maxD}`);
-            $(".dayZero").append(`<p>${description}</p>`);
 
         }).catch((err) => {
             console.log(err);
@@ -88,35 +87,52 @@ $(document).ready(function () {
 
         $.get("/api/forecast").then(function (data) {
 
-            const dayOneKMin = data.list[2]["main"]["temp"];
-            const dayOneDmin = (dayOneKMin * (9 / 5) - 459.67).toFixed(0);
-            const dayOneKMax = data.list[6]["main"]["temp"];
-            const dayOneDMax = (dayOneKMax * (9 / 5) - 459.67).toFixed(0);
+            const dayOneKSixAm = data.list[2]["main"]["temp"];
+            const dayOneDSixAm = (dayOneKSixAm * (9 / 5) - 459.67).toFixed(0);
+            const dayOneKNoon = data.list[4]["main"]["temp"];
+            const dayOneDNoon = (dayOneKNoon * (9 / 5) - 459.67).toFixed(0);
+            const dayOneKSixPm = data.list[6]["main"]["temp"];
+            const dayOneDSixPm = (dayOneKSixPm * (9 / 5) - 459.67).toFixed(0);
             const dayOneDesc = data.list[2]["weather"][0]["description"];
 
-            const dayTwoKMin = data.list[10]["main"]["temp"];
-            const dayTwoDMin = (dayTwoKMin * (9 / 5) - 459.67).toFixed(0);
-            const dayTwoKMax = data.list[14]["main"]["temp"];
-            const dayTwoDMax = (dayTwoKMax * (9 / 5) - 459.67).toFixed(0);
+            const dayTwoKSixAm = data.list[10]["main"]["temp"];
+            const dayTwoDSixAm = (dayTwoKSixAm * (9 / 5) - 459.67).toFixed(0);
+            const dayTwoKNoon = data.list[12]["main"]["temp"];
+            const dayTwoDNoon = (dayTwoKNoon * (9 / 5) - 459.67).toFixed(0);
+            const dayTwoKSixPm = data.list[14]["main"]["temp"];
+            const dayTwoDSixPm = (dayTwoKSixPm * (9 / 5) - 459.67).toFixed(0);
             const dayTwoDesc = data.list[10]["weather"][0]["description"];
 
-            const dayThreeKMin = data.list[19]["main"]["temp"];
-            const dayThreeDmin = (dayThreeKMin * (9 / 5) - 459.67).toFixed(0);
-            const dayThreeKMax = data.list[23]["main"]["temp"];
-            const dayThreeDMax = (dayThreeKMax * (9 / 5) - 459.67).toFixed(0);
-            const dayThreeDesc = data.list[19]["weather"][0]["description"];
+            const dayThreeKSixAm = data.list[18]["main"]["temp"];
+            const dayThreeDSixAm = (dayThreeKSixAm * (9 / 5) - 459.67).toFixed(0);
+            const dayThreeKNoon = data.list[20]["main"]["temp"];
+            const dayThreeDNoon = (dayThreeKNoon * (9 / 5) - 459.67).toFixed(0);
+            const dayThreeKSixPm = data.list[22]["main"]["temp"];
+            const dayThreeDSixPm = (dayThreeKSixPm * (9 / 5) - 459.67).toFixed(0);
+            const dayThreeDesc = data.list[18]["weather"][0]["description"];
 
-            const dayFourKMin = data.list[27]["main"]["temp"];
-            const dayFourDmin = (dayFourKMin * (9 / 5) - 459.67).toFixed(0);
-            const dayFourKMax = data.list[31]["main"]["temp"];
-            const dayFourDMax = (dayFourKMax * (9 / 5) - 459.67).toFixed(0);
-            const dayFourDesc = data.list[27]["weather"][0]["description"];
+            const dayFourKSixAm = data.list[26]["main"]["temp"];
+            const dayFourDSixAm = (dayFourKSixAm * (9 / 5) - 459.67).toFixed(0);
+            const dayFourKNoon = data.list[28]["main"]["temp"];
+            const dayFourDNoon = (dayFourKNoon * (9 / 5) - 459.67).toFixed(0);
+            const dayFourKSixPm = data.list[30]["main"]["temp"];
+            const dayFourDSixPm = (dayFourKSixPm * (9 / 5) - 459.67).toFixed(0);
+            const dayFourDesc = data.list[26]["weather"][0]["description"];
+
+            const dayFiveKSixAm = data.list[34]["main"]["temp"];
+            const dayFiveDSixAm = (dayFiveKSixAm * (9 / 5) - 459.67).toFixed(0);
+            const dayFiveKNoon = data.list[36]["main"]["temp"];
+            const dayFiveDNoon = (dayFiveKNoon * (9 / 5) - 459.67).toFixed(0);
+            const dayFiveKSixPm = data.list[38]["main"]["temp"];
+            const dayFiveDSixPm = (dayFiveKSixPm * (9 / 5) - 459.67).toFixed(0);
+            const dayFiveDesc = data.list[34]["weather"][0]["description"];
 
             let dayZero;
             let dayOne;
             let dayTwo;
             let dayThree;
             let dayFour;
+            let dayFive;
 
             switch (new Date().getDay()) {
                 case 0:
@@ -125,6 +141,7 @@ $(document).ready(function () {
                     dayTwo = "Tuesday";
                     dayThree = "Wednesday";
                     dayFour = "Thursday";
+                    dayFive = "Friday";
                     break;
                 case 1:
                     dayZero = "Monday";
@@ -132,6 +149,7 @@ $(document).ready(function () {
                     dayTwo = "Wednesday";
                     dayThree = "Thursday";
                     dayFour = "Friday";
+                    dayFive = "Saturday";
                     break;
                 case 2:
                     dayZero = "Tuesday";
@@ -139,13 +157,15 @@ $(document).ready(function () {
                     dayTwo = "Thursday";
                     dayThree = "Friday";
                     dayFour = "Saturday";
+                    dayFive = "Sunday";
                     break;
                 case 3:
                     dayZero = "Wednesday";
                     dayOne = "Thursday";
                     dayTwo = "Friday";
                     dayThree = "Saturday";
-                    dayFour = "TSunday";
+                    dayFour = "Sunday";
+                    dayFive = "Monday";
                     break;
                 case 4:
                     dayZero = "Thursday";
@@ -153,6 +173,7 @@ $(document).ready(function () {
                     dayTwo = "Saturday";
                     dayThree = "Sunday";
                     dayFour = "Monday";
+                    dayFive = "Tuesday";
                     break;
                 case 5:
                     dayZero = "Friday";
@@ -160,6 +181,7 @@ $(document).ready(function () {
                     dayTwo = "Sunday";
                     dayThree = "Monday";
                     dayFour = "Tuesday";
+                    dayFive = "Wednesday";
                     break;
                 case 6:
                     dayZero = "Saturday";
@@ -167,28 +189,44 @@ $(document).ready(function () {
                     dayTwo = "Monday";
                     dayThree = "Tuesday";
                     dayFour = "Wednesday";
+                    dayFive = "Thursday";
             }
 
             const one = $(".dayOne");
             const two = $(".dayTwo")
             const three = $(".dayThree");
             const four = $(".dayFour");
+            const five = $(".dayFive");
 
             one.html(`<p>${dayOne}`);
-            one.append(`<p>${dayOneDmin} - ${dayOneDMax}`);
+            one.append(`<p>6am: ${dayOneDSixAm}`);
+            one.append(`<p>12pm: ${dayOneDNoon}`);
+            one.append(`<p>6pm: ${dayOneDSixPm}`);
             one.append(`<p>${dayOneDesc}`);
 
             two.html(`<p>${dayTwo}`);
-            two.append(`<p>${dayTwoDMin} - ${dayTwoDMax}`);
+            two.append(`<p>6am: ${dayTwoDSixAm}`);
+            two.append(`<p>12pm: ${dayTwoDNoon}`);
+            two.append(`<p>6pm: ${dayTwoDSixPm}`);
             two.append(`<p>${dayTwoDesc}`);
 
             three.html(`<p>${dayThree}`);
-            three.append(`<p>${dayThreeDmin} - ${dayThreeDMax}`);
+            three.append(`<p>6am: ${dayThreeDSixAm}`);
+            three.append(`<p>12pm: ${dayThreeDNoon}`);
+            three.append(`<p>6pm: ${dayThreeDSixPm}`);
             three.append(`<p>${dayThreeDesc}`);
 
             four.html(`<p>${dayFour}`);
-            four.append(`<p>${dayFourDmin} - ${dayFourDMax}`);
+            four.append(`<p>6am: ${dayFourDSixAm}`);
+            four.append(`<p>12pm: ${dayFourDNoon}`);
+            four.append(`<p>6pm: ${dayFourDSixPm}`);
             four.append(`<p>${dayFourDesc}`);
+
+            five.html(`<p>${dayFive}`);
+            five.append(`<p>6am: ${dayFiveDSixAm}`);
+            five.append(`<p>12pm: ${dayFiveDNoon}`);
+            five.append(`<p>6pm: ${dayFiveDSixPm}`);
+            five.append(`<p>${dayFiveDesc}`);
 
         });
 

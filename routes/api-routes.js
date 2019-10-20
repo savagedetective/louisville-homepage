@@ -26,7 +26,7 @@ module.exports = function (app) {
         console.log("API forecast hit");
 
         const api = process.env.API_KEY;
-        const url = `https://api.openweathermap.org/data/2.5/forecast?zip=40204&appid=${api}`
+        const url = `https://api.openweathermap.org/data/2.5/forecast?zip=40204&forecast.temperature.min&forecast.temperature.max&appid=${api}`
 
         axios.get(url)
             .then(function(results) {
