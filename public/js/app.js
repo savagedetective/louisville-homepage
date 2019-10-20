@@ -73,8 +73,7 @@ $(document).ready(function () {
 
             $(".temp-holder").html(`<p>${day}</p>`);
             $(".temp-holder").append(`<p>${tempDegrees}</p>`);
-            $(".temp-holder").append(`<p>${minD} - ${maxD}`);
-            $(".temp-holder").append(`<p>${description}</p>`);
+            $(".temp-holder").append(`<p>${minD} - ${maxD}. ${description}.`);
 
         }).catch((err) => {
             console.log(err);
@@ -258,4 +257,5 @@ $(document).ready(function () {
     setTemp();
     setForecast();
     setInterval(progressBar, 6000);
+    setInterval(setForecast, 6000);
 });
