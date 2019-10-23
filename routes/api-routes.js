@@ -6,7 +6,7 @@ module.exports = function (app) {
         console.log("API weather hit");
 
         const api = process.env.API_KEY;
-        const url = `https://api.openweathermap.org/data/2.5/weather?zip=40204&appid=${api}`
+        const url = `https://api.darksky.net/forecast/${api}/38.235953,-85.720491?exclude=minutely,hourly,alerts,flags`;
 
         axios.get(url)
             .then(function(results) {
@@ -21,23 +21,4 @@ module.exports = function (app) {
         
     });
 
-    app.get("/api/forecast", function (req, res) {
-
-        console.log("API forecast hit");
-
-        const api = process.env.API_KEY;
-        const url = `https://api.openweathermap.org/data/2.5/forecast?zip=40204&forecast.temperature.min&forecast.temperature.max&appid=${api}`
-
-        axios.get(url)
-            .then(function(results) {
-
-                const data = results.data;
-                res.json(data);
-
-            })
-                .catch((err) => {
-                    console.log(err);
-                });
-        
-    });
 };

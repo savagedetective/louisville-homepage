@@ -36,13 +36,10 @@ $(document).ready(function () {
 
         $.get("/api/weather").then(function (data) {
 
-            const tempKelvin = data.main.temp;
-            const tempDegrees = (tempKelvin * (9 / 5) - 459.67).toFixed(1);
-            const description = data.weather[0]["description"];
-            const minK = (data.main.temp_min);
-            const minD = (minK * (9 / 5) - 459.67).toFixed(0);
-            const maxK = data.main.temp_max;
-            const maxD = (maxK * (9 / 5) - 459.67).toFixed(0);
+            const temp = (data.currently.temperature).toFixed(1);
+            const description = data.currently.summary;
+            const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
+            const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
 
             let day;
 
@@ -69,11 +66,11 @@ $(document).ready(function () {
                     day = "Saturday";
             }
 
-            console.log(`Today is ${day}. Current temperature is ${tempDegrees}. Weather is ${description}.`);
+            console.log(`Today is ${day}. Current temperature is ${temp}. Weather is ${description}.`);
 
             $(".temp-holder").html(`<p>${day}</p>`);
-            $(".temp-holder").append(`<p>${tempDegrees}</p>`);
-            $(".temp-holder").append(`<p>${minD} - ${maxD}. ${description}.`);
+            $(".temp-holder").append(`<p>${temp}</p>`);
+            $(".temp-holder").append(`<p>${min} - ${max}. ${description}.`);
 
         }).catch((err) => {
             console.log(err);
@@ -255,7 +252,7 @@ $(document).ready(function () {
     //handles motion of clock hands every second.
     setInterval(setDate, 1000);
     setTemp();
-    setForecast();
+    //setForecast();
     setInterval(progressBar, 6000);
-    setInterval(setForecast, 6000);
+    //setInterval(setForecast, 6000);
 });
