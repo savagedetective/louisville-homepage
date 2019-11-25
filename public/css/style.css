@@ -84,6 +84,16 @@ html {
     margin-bottom: 1rem;
   }
 
+  .temp-holder p:nth-child(3)  {
+    font-size: 5rem;
+    margin-top:-60px;
+  }
+
+  .temp-holder p:nth-child(4) {
+    font-size:5rem;
+    margin-top:-30px;
+  }
+
   .five-day {
     text-align: center;
     padding-top:35px;
