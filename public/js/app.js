@@ -36,11 +36,6 @@ $(document).ready(function () {
 
         $.get("/api/weather").then(function (data) {
 
-            const temp = (data.currently.temperature).toFixed(1);
-            const description = data.currently.summary;
-            const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
-            const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
-
             let dayZero;
             let dayOne;
             let dayTwo;
@@ -104,15 +99,24 @@ $(document).ready(function () {
                     dayFour = "Wednesday";
                     dayFive = "Thursday";
             }
-
+            const main = $(".temp-holder");
             const one = $(".dayOne");
             const two = $(".dayTwo")
             const three = $(".dayThree");
             const four = $(".dayFour");
             const five = $(".dayFive");
 
-            one.html(`<p>${dayZero}`);
+            const temp = (data.currently.temperature).toFixed(1);
+            const description = data.currently.summary;
+            const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
+            const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
 
+            main.html(`<p>Just this second...</p>`)
+                .append(`<p>${temp}</p>`);
+
+            one.html(`<p>${dayZero}`)
+                .append(`<p>${min} - ${max}`)
+                .append(`<p>${description}`);
 
             two.html(`<p>${dayOne}`);
 
@@ -126,8 +130,7 @@ $(document).ready(function () {
 
             console.log(`Today is ${dayZero}. Current temperature is ${temp}. Weather is ${description}.`);
 
-            $(".temp-holder").html(`<p>Just this second...</p>`);
-            $(".temp-holder").append(`<p>${temp}</p>`);
+
 
         }).catch((err) => {
             console.log(err);
