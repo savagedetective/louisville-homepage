@@ -41,36 +41,93 @@ $(document).ready(function () {
             const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
             const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
 
-            let day;
+            let dayOne;
+            let dayTwo;
+            let dayThree;
+            let dayFour;
+            let dayFive;
 
             switch (new Date().getDay()) {
                 case 0:
-                    day = "Sunday";
+                    dayZero = "Sunday";
+                    dayOne = "Monday";
+                    dayTwo = "Tuesday";
+                    dayThree = "Wednesday";
+                    dayFour = "Thursday";
+                    dayFive = "Friday";
                     break;
                 case 1:
-                    day = "Monday";
+                    dayZero = "Monday";
+                    dayOne = "Tuesday";
+                    dayTwo = "Wednesday";
+                    dayThree = "Thursday";
+                    dayFour = "Friday";
+                    dayFive = "Saturday";
                     break;
                 case 2:
-                    day = "Tuesday";
+                    dayZero = "Tuesday";
+                    dayOne = "Wednesday";
+                    dayTwo = "Thursday";
+                    dayThree = "Friday";
+                    dayFour = "Saturday";
+                    dayFive = "Sunday";
                     break;
                 case 3:
-                    day = "Wednesday";
+                    dayZero = "Wednesday";
+                    dayOne = "Thursday";
+                    dayTwo = "Friday";
+                    dayThree = "Saturday";
+                    dayFour = "Sunday";
+                    dayFive = "Monday";
                     break;
                 case 4:
-                    day = "Thursday";
+                    dayZero = "Thursday";
+                    dayOne = "Friday";
+                    dayTwo = "Saturday";
+                    dayThree = "Sunday";
+                    dayFour = "Monday";
+                    dayFive = "Tuesday";
                     break;
                 case 5:
-                    day = "Friday";
+                    dayZero = "Friday";
+                    dayOne = "Saturday";
+                    dayTwo = "Sunday";
+                    dayThree = "Monday";
+                    dayFour = "Tuesday";
+                    dayFive = "Wednesday";
                     break;
                 case 6:
-                    day = "Saturday";
+                    dayZero = "Saturday";
+                    dayOne = "Sunday";
+                    dayTwo = "Monday";
+                    dayThree = "Tuesday";
+                    dayFour = "Wednesday";
+                    dayFive = "Thursday";
             }
 
-            console.log(`Today is ${day}. Current temperature is ${temp}. Weather is ${description}.`);
+            const one = $(".dayOne");
+            const two = $(".dayTwo")
+            const three = $(".dayThree");
+            const four = $(".dayFour");
+            const five = $(".dayFive");
 
-            $(".temp-holder").html(`<p>${day}</p>`);
+            one.html(`<p>${dayZero}`);
+
+
+            two.html(`<p>${dayOne}`);
+
+
+            three.html(`<p>${dayTwo}`);
+
+
+            four.html(`<p>${dayThree}`);
+
+            five.html(`<p>${dayFour}`);
+
+            console.log(`Today is ${dayZero}. Current temperature is ${temp}. Weather is ${description}.`);
+
+            $(".temp-holder").html(`<p>Just this second...</p>`);
             $(".temp-holder").append(`<p>${temp}</p>`);
-            $(".temp-holder").append(`<p>${min} - ${max}. ${description}.`);
 
         }).catch((err) => {
             console.log(err);
