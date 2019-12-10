@@ -107,9 +107,25 @@ $(document).ready(function () {
             const five = $(".dayFive");
 
             const temp = (data.currently.temperature).toFixed(1);
-            const description = data.currently.summary;
+            const description = (data.daily.data[0]["summary"]);
             const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
             const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
+
+            const oneMin = (data.daily.data[1]["temperatureLow"]).toFixed(0);
+            const oneMax = (data.daily.data[1]["temperatureHigh"]).toFixed(0);
+            const oneDesc = (data.daily.data[1]["summary"]);
+
+            const twoMin = (data.daily.data[2]["temperatureLow"]).toFixed(0);
+            const twoMax = (data.daily.data[2]["temperatureHigh"]).toFixed(0);
+            const twoDesc = (data.daily.data[2]["summary"]);
+
+            const threeMin = (data.daily.data[3]["temperatureLow"]).toFixed(0);
+            const threeMax = (data.daily.data[3]["temperatureHigh"]).toFixed(0);
+            const threeDesc = (data.daily.data[3]["summary"]);
+
+            const fourMin = (data.daily.data[4]["temperatureLow"]).toFixed(0);
+            const fourMax = (data.daily.data[4]["temperatureHigh"]).toFixed(0);
+            const fourDesc = (data.daily.data[4]["summary"]);
 
             main.html(`<p>Just this second...</p>`)
                 .append(`<p>${temp}</p>`);
@@ -118,24 +134,27 @@ $(document).ready(function () {
                 .append(`<p>${min} - ${max}`)
                 .append(`<p>${description}`);
 
-            two.html(`<p>${dayOne}`);
+            two.html(`<p>${dayOne}`)
+                .append(`<p>${oneMin} - ${oneMax}`)
+                .append(`<p>${oneDesc}`);
 
+            three.html(`<p>${dayTwo}`)
+                .append(`<p>${twoMin} - ${twoMax}`)
+                .append(`<p>${twoDesc}`);
 
-            three.html(`<p>${dayTwo}`);
+            four.html(`<p>${dayThree}`)
+                .append(`<p>${threeMin} - ${threeMax}`)
+                .append(`<p>${threeDesc}`);
 
-
-            four.html(`<p>${dayThree}`);
-
-            five.html(`<p>${dayFour}`);
+            five.html(`<p>${dayFour}`)
+                .append(`<p>${fourMin} - ${fourMax}`)
+                .append(`<p>${fourDesc}`);
 
             console.log(`Today is ${dayZero}. Current temperature is ${temp}. Weather is ${description}.`);
-
-
 
         }).catch((err) => {
             console.log(err);
         });
-
 
     }
 
