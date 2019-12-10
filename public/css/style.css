@@ -6,7 +6,7 @@ html {
   body {
     margin: 0;
     font-size: 2rem;
-    background-color:rgb(122, 122, 238);
+    background-color:rgb(193, 193, 230);
   }
 
   .jumbotron {
@@ -22,14 +22,14 @@ html {
     background-size: 90%;
     width: 30rem;
     height: 30rem;
-    border: 20px solid white;
+    border: 20px solid #212529;
     border-radius: 50%;
     margin: 50px auto;
     position: static;
     padding: 2rem;
     box-shadow:
       0 0 0 4px rgba(0,0,0,0.1),
-      inset 0 0 0 3px #EFEFEF,
+      inset 0 0 0 3px #212529,
       inset 0 0 10px black,
       0 0 10px rgba(0,0,0,0.2);
   }
@@ -97,4 +97,17 @@ html {
   .five-day {
     text-align: center;
     padding-top:35px;
+    margin-bottom: 40px;
+  }
+
+  .footer {
+    width:100%;
+    height:40px;
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index: 1000;
+    background-color:rgb(193, 193, 230);
+    text-align: center;
+    font-size: .8em;
   }
