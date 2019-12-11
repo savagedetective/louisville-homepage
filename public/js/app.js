@@ -162,10 +162,18 @@ $(document).ready(function () {
 
             console.log(`Today is ${dayZero}. Current temperature is ${temp}. Weather is ${description}.`);
 
-        }).catch((err) => {
-            console.log(err);
-        });
+        }).then(function() {
+            addBackgrounds();
+        })
+            .catch((err) => {
+                console.log(err);
+            });
 
+    }
+
+
+    function addBackgrounds() {
+        console.log("hello");
     }
 
     function progressBar() {
