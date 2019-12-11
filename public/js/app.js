@@ -107,46 +107,56 @@ $(document).ready(function () {
             const five = $(".dayFive");
 
             const temp = (data.currently.temperature).toFixed(1);
-            const description = (data.daily.data[0]["summary"]);
+            const description = data.daily.data[0]["summary"];
             const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
             const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
+            const zeroIcon = data.daily.data[0]["icon"];
 
             const oneMin = (data.daily.data[1]["temperatureLow"]).toFixed(0);
             const oneMax = (data.daily.data[1]["temperatureHigh"]).toFixed(0);
-            const oneDesc = (data.daily.data[1]["summary"]);
+            const oneDesc = data.daily.data[1]["summary"];
+            const oneIcon = data.daily.data[1]["icon"];
 
             const twoMin = (data.daily.data[2]["temperatureLow"]).toFixed(0);
             const twoMax = (data.daily.data[2]["temperatureHigh"]).toFixed(0);
-            const twoDesc = (data.daily.data[2]["summary"]);
+            const twoDesc = data.daily.data[2]["summary"];
+            const twoIcon = data.daily.data[2]["icon"];
 
             const threeMin = (data.daily.data[3]["temperatureLow"]).toFixed(0);
             const threeMax = (data.daily.data[3]["temperatureHigh"]).toFixed(0);
-            const threeDesc = (data.daily.data[3]["summary"]);
+            const threeDesc = data.daily.data[3]["summary"];
+            const threeIcon = data.daily.data[3]["icon"];
 
             const fourMin = (data.daily.data[4]["temperatureLow"]).toFixed(0);
             const fourMax = (data.daily.data[4]["temperatureHigh"]).toFixed(0);
-            const fourDesc = (data.daily.data[4]["summary"]);
+            const fourDesc = data.daily.data[4]["summary"];
+            const fourIcon = data.daily.data[4]["icon"];
 
             main.html(`<p>Just this second...</p>`)
                 .append(`<p>${temp}</p>`);
 
             one.html(`<p>${dayZero}`)
+                .attr("data-icon", zeroIcon)
                 .append(`<p>${min} - ${max}`)
                 .append(`<p>${description}`);
 
             two.html(`<p>${dayOne}`)
+                .attr("data-icon", oneIcon)
                 .append(`<p>${oneMin} - ${oneMax}`)
                 .append(`<p>${oneDesc}`);
 
             three.html(`<p>${dayTwo}`)
+                .attr("data-icon", twoIcon)
                 .append(`<p>${twoMin} - ${twoMax}`)
                 .append(`<p>${twoDesc}`);
 
             four.html(`<p>${dayThree}`)
+                .attr("data-icon", threeIcon)
                 .append(`<p>${threeMin} - ${threeMax}`)
                 .append(`<p>${threeDesc}`);
 
             five.html(`<p>${dayFour}`)
+                .attr("data-icon", fourIcon)
                 .append(`<p>${fourMin} - ${fourMax}`)
                 .append(`<p>${fourDesc}`);
 

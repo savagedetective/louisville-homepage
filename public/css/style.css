@@ -42,12 +42,9 @@ html {
   }
 
   .hand {
-    width: 38%;
-    height: 6px;
     background: black;
     position: absolute;
     top: 50%;
-    left:12%;
     transform-origin: 100%;
     transition: all 0.05s;
     transform: rotate(90deg);
@@ -56,7 +53,7 @@ html {
 
   .hour-hand {
     width: 33%;
-    left: 17.3%;
+    left: 17%;
     height: 3px;
   }
 
