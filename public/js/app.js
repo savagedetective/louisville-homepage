@@ -173,7 +173,23 @@ $(document).ready(function () {
 
 
     function addBackgrounds() {
-        console.log("hello");
+
+        const dayDivs = $(".five-day > div");
+
+        for (i = 0; i < dayDivs.length; i++) {
+
+            let bg = dayDivs[i].getAttribute("data-icon");
+
+            switch (bg) {
+                case "rain":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/rain.png")');
+                break;
+                case "partly-cloudy-day":
+                console.log("ITS PARTLY CLOUDY");
+                break;
+            }
+        }
+
     }
 
     function progressBar() {
