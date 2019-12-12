@@ -133,31 +133,31 @@ $(document).ready(function () {
             const fourIcon = data.daily.data[4]["icon"];
 
             main.html(`<p>Just this second...</p>`)
-                .append(`<p>${temp}</p>`);
+                .append(`<p>${temp}°</p>`);
 
             one.html(`<p>${dayZero}`)
                 .attr("data-icon", zeroIcon)
-                .append(`<p>${min} - ${max}`)
+                .append(`<p>${min}° - ${max}°`)
                 .append(`<p>${description}`);
 
             two.html(`<p>${dayOne}`)
                 .attr("data-icon", oneIcon)
-                .append(`<p>${oneMin} - ${oneMax}`)
+                .append(`<p>${oneMin}° - ${oneMax}°`)
                 .append(`<p>${oneDesc}`);
 
             three.html(`<p>${dayTwo}`)
                 .attr("data-icon", twoIcon)
-                .append(`<p>${twoMin} - ${twoMax}`)
+                .append(`<p>${twoMin}° - ${twoMax}°`)
                 .append(`<p>${twoDesc}`);
 
             four.html(`<p>${dayThree}`)
                 .attr("data-icon", threeIcon)
-                .append(`<p>${threeMin} - ${threeMax}`)
+                .append(`<p>${threeMin}° - ${threeMax}°`)
                 .append(`<p>${threeDesc}`);
 
             five.html(`<p>${dayFour}`)
                 .attr("data-icon", fourIcon)
-                .append(`<p>${fourMin} - ${fourMax}`)
+                .append(`<p>${fourMin}° - ${fourMax}°`)
                 .append(`<p>${fourDesc}`);
 
             console.log(`Today is ${dayZero}. Current temperature is ${temp}. Weather is ${description}.`);
