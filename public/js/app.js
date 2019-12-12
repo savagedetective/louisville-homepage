@@ -185,7 +185,31 @@ $(document).ready(function () {
                 dayDivs[i].setAttribute('style', 'background-image: url("../images/rain.png")');
                 break;
                 case "partly-cloudy-day":
-                console.log("ITS PARTLY CLOUDY");
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/partlyCloudyDay.png")');
+                break;
+                case "partly-cloudy-night":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/partlyCloudyNight.png")');
+                break;
+                case "clear-day":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/clear.png")');
+                break;
+                case "clear-night":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/clearNight.png")');
+                break;
+                case "snow":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/snow.png")');
+                break;
+                case "sleet":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/snow.png")');
+                break;
+                case "wind":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/windy.png")');
+                break;
+                case "fog":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/cloudy.png")');
+                break;
+                case "cloudy":
+                dayDivs[i].setAttribute('style', 'background-image: url("../images/cloudy.png")');
                 break;
             }
         }
