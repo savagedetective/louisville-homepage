@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/savagedetective/louisville-homepage/issues"
   },
-  "homepage": "https://github.com/savagedetective/louisville-homepage#readme"
+  "homepage": "https://github.com/savagedetective/louisville-homepage#readme",
+  "heroku-run-build-script": true
 }
