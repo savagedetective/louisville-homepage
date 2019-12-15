@@ -107,6 +107,8 @@ $(document).ready(function () {
             const five = $(".dayFive");
 
             const temp = (data.currently.temperature).toFixed(1);
+            const currentIcon = data.currently.icon;
+
             const description = data.daily.data[0]["summary"];
             const min = (data.daily.data[0]["temperatureLow"]).toFixed(0);
             const max = (data.daily.data[0]["temperatureHigh"]).toFixed(0);
@@ -133,6 +135,7 @@ $(document).ready(function () {
             const fourIcon = data.daily.data[4]["icon"];
 
             main.html(`<p>Just this second...</p>`)
+                .attr("data-icon", currentIcon)
                 .append(`<p>${temp}°</p>`);
 
             one.html(`<p>${dayZero}`)
@@ -162,7 +165,7 @@ $(document).ready(function () {
 
             console.log(`Today is ${dayZero}. Current temperature is ${temp}. Weather is ${description}.`);
 
-        }).then(function() {
+        }).then(function () {
             addBackgrounds();
         })
             .catch((err) => {
@@ -174,6 +177,9 @@ $(document).ready(function () {
 
     function addBackgrounds() {
 
+        //loops through the 5-day divs, gathers their icon data from the API and assigns it to each div as a data attribute.
+        //switch case handles when to use what bg image
+
         const dayDivs = $(".five-day > div");
 
         for (i = 0; i < dayDivs.length; i++) {
@@ -182,35 +188,75 @@ $(document).ready(function () {
 
             switch (bg) {
                 case "rain":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/rain.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/rain.png")');
+                    break;
                 case "partly-cloudy-day":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/partlyCloudyDay.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/partlyCloudyDay.png")');
+                    break;
                 case "partly-cloudy-night":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/partlyCloudyNight.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/partlyCloudyNight.png")');
+                    break;
                 case "clear-day":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/clear.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/clear.png")');
+                    break;
                 case "clear-night":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/clearNight.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/clearNight.png")');
+                    break;
                 case "snow":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/snow.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/snow.png")');
+                    break;
                 case "sleet":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/snow.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/snow.png")');
+                    break;
                 case "wind":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/windy.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/windy.png")');
+                    break;
                 case "fog":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/cloudy.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/cloudy.png")');
+                    break;
                 case "cloudy":
-                dayDivs[i].setAttribute('style', 'background-image: url("../images/cloudy.png")');
-                break;
+                    dayDivs[i].setAttribute('style', 'background-image: url("../images/cloudy.png")');
+                    break;
+            }
+
+            //handles the main div itself, since there is only one instance
+
+            const mainIcon = $('.temp-holder');
+            let mainBG = mainIcon.attr("data-icon");
+            const BG = $('.current-temp');
+
+            switch (mainBG) {
+                case "rain":
+                    BG.attr('style', 'background-image: url("../images/rain.png")');
+                    break;
+                case "partly-cloudy-day":
+                    BG.attr('style', 'background-image: url("../images/partlyCloudyDay.png")');
+                    break;
+                case "partly-cloudy-night":
+                    BG.attr('style', 'background-image: url("../images/partlyCloudyNight.png")');
+                    break;
+                case "clear-day":
+                    BG.attr('style', 'background-image: url("../images/clear.png")');
+                    break;
+                case "clear-night":
+                    BG.attr('style', 'background-image: url("../images/clearNight.png")');
+                    break;
+                case "snow":
+                    BG.attr('style', 'background-image: url("../images/snow.png")');
+                    break;
+                case "sleet":
+                    BG.attr('style', 'background-image: url("../images/snow.png")');
+                    break;
+                case "wind":
+                    BG.attr('style', 'background-image: url("../images/windy.png")');
+                    break;
+                case "fog":
+                    BG.attr('style', 'background-image: url("../images/cloudy.png")');
+                    break;
+                case "cloudy":
+                    BG.attr('style', 'background-image: url("../images/cloudy.png")');
+                    break;
+
             }
         }
 
